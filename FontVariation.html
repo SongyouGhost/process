@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FontVariation</title>
+    <link rel="icon" href="FontLogo.png" type="image"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        :root {
+            --mouseX: 0;
+            --mouseY: 0;
+            --font-weight: 100;
+            --font-width: 75;
+            --font-size: 3em;
+            --font: Open Sans Variable;
+            --color1: #222000;
+            --color2: #ffee00;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color1);
+            overflow: hidden;
+            font-weight: var(--mouseX);
+            cursor: none;
+            transition: all 300ms ease;
+        }
+
+        .box {
+            position: absolute;
+            top: var(--mouseY);
+            left: var(--mouseX);
+            width: 2px;
+            height: 2px;
+            border-radius: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            transition: all 10ms ease-out, background-color 10ms linear;
+            transform: translate(-50%, -50%);
+            background-color: var(--color2);
+            color: var(--color2);
+            letter-spacing: -0.1em;
+            font-family: 'Roboto Slab', serif;
+            font-size: 0.8em;
+            pointer-events: none;
+        }
+        .box:hover {
+            background-color: #cccccc;
+            color: rgb(255, 255, 255);
+        }
+        .side1 {
+            background-color: rgb(87, 87, 87);
+        }
+        .side2 {
+            background-color: rgb(92, 92, 92);
+
+        }
+        .side3 {
+            background-color: rgb(142, 142, 142);
+
+        }
+        .container {
+            width: var(--mouseX);
+            height: var(--mouseY);
+            border: 2px solid #000;
+            background-color: #c3c3c3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: all 300ms ease-out;
+            display: none;
+        }
+
+        .text {
+            font-family: 'ToneOZ-Tsuipita', sans-serif;
+            font-size: calc(var(--mouseX) - var(--mouseY) + 10%); /* 初始字體大小 */
+            transform: scale(var(--mouseX), var(--mouseY));
+            white-space: nowrap;
+            color: red;
+            letter-spacing: -0.2em;
+            text-shadow: 5px 5px 0 red, -5px -5px 0 #000, 5px -5px 0 #000, -5px 5px 0 #000; /* 模擬加粗效果 */
+            transition: all 50ms ease-out;
+            pointer-events: none;
+            display: none;
+        }
+        .text2 {
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--font-size); /* 字體大小 */
+            font-family: var(--font);
+            font-variation-settings: 'wdth' var(--font-width, 100), 'wght' var(--font-weight, 800);
+        }
+        input[type="text"] {
+            background-color: transparent;/* 背景無色 */
+            border: 0px solid transparent; /* 白色邊框 */
+            color: var(--color2); /* 白色文字 */
+            padding: 10vw; /* 內邊距 */
+            outline: none; /* 移除點擊時的外框 */
+            border-radius: 5px; /* 圓角 */
+            text-align: center;
+            cursor: none;
+            letter-spacing: -0.1em;
+            transition: color 300ms ease, font-variation-settings 10ms linear;
+        }
+        input[type="text"]::placeholder {
+            color: calc(var(--color2) - 20); /* 佔位符顏色 */
+            opacity: 50%;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--color2);
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .nohover:hover {
+            background-color: transparent;
+            color: var(--color1);
+        }
+        input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 1em;
+            height: 1em;
+            background: var(--color1);
+            cursor: pointer;
+            border-radius: 10px;
+          }
+        .valuedisplay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            font-size: 10em;
+        }
+        .font-list {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            top: 1vw;
+            left: 1vw;
+            width: 20vw;
+            height: auto;
+            padding: 10px;
+            background-color: transparent;
+            line-height: 1em;
+        }
+
+        .font-list p {
+            font-size: 0.5em;
+            color: var(--color2);
+            border-top: 1px solid var(--color2);
+            padding: 0.5em 0.2em;
+            margin: auto 0;
+            cursor: pointer;
+            font-family: 'Roboto Slab', serif;
+        }
+        .font-thu:hover {
+            background-color: var(--color2);
+            color: var(--color1);
+        }
+    </style>
+</head>
+<body>
+    <div class="font-list" id="fontList">
+        <p>
+            FontSize
+            <input type="range" min="0.5" max="10" step="0.1" value="3" id="fontSizeRange">
+        </p>
+        
+    </div>
+    <div class="box"><div id="valuedisplay">0</div><div id="valuedisplay2">0</div></div>
+    <div class="text2"><input type="text" placeholder="EnterText..." value="Hamburg" class="text2"></div>
+    <div class="container">
+        <div class="text">天國將至</div>
+    </div>
+    
+    <script>
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX + 'px';
+            const mouseY = event.clientY + 'px';
+            document.documentElement.style.setProperty('--mouseX', mouseX);
+            document.documentElement.style.setProperty('--mouseY', mouseY);
+        });
+        document.addEventListener('mousemove', function(event) {
+            // 取得滑鼠的X位置
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            // 取得視窗寬度
+            const windowWidth = window.innerWidth;
+            // 获取窗口的高度
+            const windowHeight = window.innerHeight;
+            // 計算字重（範圍在100到900之間）
+            const fontWeight = Math.round((mouseY / windowWidth) * 600) + 200;
+            const italicValue = 75 + 25 * (mouseX / windowHeight);
+            // 更新CSS變數
+            document.documentElement.style.setProperty('--font-weight', fontWeight);
+            document.documentElement.style.setProperty('--font-width', italicValue);
+            document.getElementById('valuedisplay').textContent = italicValue.toFixed(2); // 保留两位小数
+            document.getElementById('valuedisplay2').textContent = fontWeight.toFixed(2); // 保留两位小数
+        });
+        
+        const root = document.documentElement;
+        document.addEventListener('DOMContentLoaded', () => {
+        const fontTrack = [
+        { 
+            name: 'Open Sans', 
+            font: 'Open Sans Variable', 
+            color1: '#31AACE',  
+            color2: '#A9D6FF',  
+            url: 'font/OpenSans-VariableFont_wdth,wght.ttf'
+        },
+        { 
+            name: 'OpenSans Italic', 
+            font: 'OpenSans Italic VariableFont', 
+            color1: '#4CAF50',  
+            color2: '#D4F3E7',  
+            url: 'font/OpenSans-Italic-VariableFont_wdth,wght.ttf'
+        },
+        { 
+            name: 'NunitoSans', 
+            font: 'NunitoSans VariableFont', 
+            color1: '#F57C00',  
+            color2: '#FFD180',  
+            url: 'font/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf'
+        },
+        { 
+            name: 'NunitoSans Italic', 
+            font: 'NunitoSans Italic VariableFont', 
+            color1: '#9C27B0',  
+            color2: '#E1BEE7',  
+            url: 'font/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf'
+        },
+        { 
+            name: 'Playwrite AU TAS', 
+            font: 'Playwrite AUTAS VariableFont', 
+            color1: '#FF9800',  
+            color2: '#FFE0B2',  
+            url: 'font/PlaywriteAUTAS-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'PlayfairDisplay', 
+            font: 'PlayfairDisplay-VariableFont', 
+            color1: '#607D8B',  
+            color2: '#CFD8DC',  
+            url: 'font/PlayfairDisplay-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'PlayfairDisplay Italic', 
+            font: 'PlayfairDisplay-Italic-VariableFont', 
+            color1: '#795548',  
+            color2: '#D7CCC8',  
+            url: 'font/PlayfairDisplay-Italic-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'NotoSerifJP', 
+            font: 'NotoSerifJP VariableFont', 
+            color1: '#FF0A1E',  
+            color2: '#FFF7F6',  
+            url: 'font/NotoSerifJP-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'LibreBodoni', 
+            font: 'LibreBodoni VariableFont', 
+            color1: '#E91E63',  
+            color2: '#F8BBD0',  
+            url: 'font/LibreBodoni-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'LibreBodoni Italic', 
+            font: 'LibreBodoni Italic VariableFont', 
+            color1: '#009688',  
+            color2: '#B2DFDB',  
+            url: 'font/LibreBodoni-Italic-VariableFont_wght.ttf'
+        },
+        { 
+            name: 'Handjet', 
+            font: 'Handjet VariableFont', 
+            color1: '#3D6E35',  
+            color2: '#0A1614',  
+            url: 'font/Handjet-VariableFont_ELGR,ELSH,wght.ttf'
+        }
+             
+        ];
+        
+        const fontList = document.getElementById('fontList');
+
+        fontTrack.forEach((font, index) => {
+            const p = document.createElement('p');
+            p.className = 'font-thu';
+            p.style.fontFamily = `${font.font}, sans-serif`;
+            p.setAttribute('data-index', index);
+            p.textContent = font.name;
+            fontList.appendChild(p);
+        });
+
+        fontTrack.forEach((font, index) => {
+            // 動態生成 @font-face 規則
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @font-face {
+                    font-family: '${font.font}';
+                    src: url('${font.url}') format('truetype');
+                    font-weight: 1 999;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+        
+        const fontSizeRange = document.getElementById('fontSizeRange');
+        const text2 = document.querySelector('.text2');
+
+        fontSizeRange.addEventListener('input', function() {
+            const fontSizeValue = this.value;
+            text2.style.setProperty('--font-size', fontSizeValue + 'em');
+        });
+
+        let currentfontTrack = 0;
+
+        function loadFont(index) {
+            const font = fontTrack[index];
+            root.style.setProperty('--color1', font.color1);
+            root.style.setProperty('--color2', font.color2);
+            root.style.setProperty('--font', font.font);
+        }
+
+        const trackThumbnails = document.querySelectorAll('.font-thu');
+        trackThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                currentfontTrack = index;
+                loadFont(index);
+            });
+        });
+
+        
+    });
+    
+    
+    </script>
+</body>
+</html>
