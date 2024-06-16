@@ -20,6 +20,7 @@
 
         body {
             margin: 0;
+            width: 100vw;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -184,9 +185,10 @@
     </style>
 </head>
 <body>
+    <div class="text2"><input type="text" placeholder="EnterText..." value="Hamburg" class="text2"></div>
     <div class="font-list" id="fontList">
         <p>
-            About <br>
+            <strong>About</strong><br>
             <br>
             This a FontVariation web. Have some google font and.. all is VariableFont.<br>
             Have Fun!<br>
@@ -194,13 +196,11 @@
             make by <a href="https://www.instagram.com/sonnngyou.ghost/">@sonnngyou.ghost</a>
         </p>
         <p>
-            FontSize
+            <strong>FontSize</strong>
             <input type="range" min="0.5" max="10" step="0.1" value="3" id="fontSizeRange">
         </p>
-        
     </div>
     <div class="box"><div id="valuedisplay">0</div><div id="valuedisplay2">0</div></div>
-    <div class="text2"><input type="text" placeholder="EnterText..." value="Hamburg" class="text2"></div>
     <div class="container">
         <div class="text">天國將至</div>
     </div>
