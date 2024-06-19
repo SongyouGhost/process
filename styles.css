@@ -133,14 +133,14 @@ input[type="radio"]:checked + label {
 }
   
   /* 電腦樣式 */
-  @media screen and (min-width: 769px) {
+  @media (min-width: 769px) {
     .navbar a {
       float: left;
     }
   }
   
   /* 手機樣式 */
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     .navbar {
         transition: all 100ms ease-in-out;
         height: 50px;
