@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const workcon = document.getElementById('works-container');
     navbar.innerHTML = `
     <div class="navbarbackground"></div>
-      <a href="../index.html">WORKS</a>
-      <a href="../about.html">ABOUT</a>
+      <a href="process/index.html">WORKS</a>
+      <a href="process/about.html">ABOUT</a>
         <div class="radio-container">
             <input type="radio" id="lightMode" name="mode" value="light">
             <label for="lightMode">light</label>
