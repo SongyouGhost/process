@@ -30,6 +30,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
   });
+  // 檢查文件是否存在的函數
+  function fileExists(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', url, false); // 使用同步請求
+    xhr.send();
+    return xhr.status !== 404;
+  }
+
+  // 檢查並動態更改超連結
+  document.addEventListener('DOMContentLoaded', function() {
+    var worksLink = document.querySelector('a[href="index.html"]');
+    var aboutLink = document.querySelector('a[href="about.html"]');
+
+    if (!fileExists('index.html')) {
+      worksLink.href = '../index.html';
+    }
+
+    if (!fileExists('about.html')) {
+      aboutLink.href = '../about.html';
+    }
+  });
   document.addEventListener('DOMContentLoaded', function() {
     const lightModeRadio = document.getElementById('lightMode');
     const darkModeRadio = document.getElementById('darkMode');
