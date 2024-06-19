@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>幽(松佑)作品集</title>
+  <link rel="icon" type="image/png" href="ghostlogo.png">
+</head>
+<link rel="stylesheet" href="styles.css">
+<!-- 引入 Inter 字體 -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<!-- 引入 思源黑體 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap">
+<style>
+    #works-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        top: 10vh;
+        right: 10px;
+        width: 50vw;
+        margin: 100px 0px;
+        padding: 0 0px;
+    }
+
+    .start {
+        position: fixed;
+        top: 10vh;
+        margin: 100px 0px;
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        padding: 0 15px;
+    }
+    .start h1 {
+        font-size: 10vw;
+    }
+    .awork {
+        position: relative;
+        background-color: transparent;
+        color: var(--Maincolor);
+        border-radius: 15px 15px 10px 10px;
+        padding: 10px;
+        border-top: 1px solid;
+        transition: all 100ms ease-in-out;
+        cursor: pointer;
+    }
+    .awork:hover {
+        background-color: var(--Maincolor);
+        color: var(--BGcolor);
+        text-decoration: underline;
+        border-top: 3px solid;
+    }
+
+    .workinfo {
+        position: relative;
+        width: 100%;
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: row;
+        text-align: justify;
+        vertical-align: bottom;
+        align-items: baseline;
+    }
+
+    .awork h1 {
+        font-size: 2em;
+        font-weight: 700;
+    }
+
+    .awork h2 {
+        position: absolute;
+        font-size: 2em;
+        font-weight: 300;
+        left: 50%;
+    }
+
+    .awork .BGimg {
+        background-color: #000;
+        width: 100%;
+        height: 300px;
+        border-radius: 0px 0px 8px 8px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .awork img{
+        width: auto;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .blur {
+        filter: blur(6px);
+    }
+
+    @media (max-width: 768px) {
+        #works-container {
+            position: relative;
+            top: auto;
+            width: 100%;
+            padding: 10px 20px;
+            right: auto;
+            margin: 20px 0px;
+        }
+
+        .start {
+            position: relative;
+            justify-content: center;
+            top: auto;
+            height: 50vh;
+            margin: 100px 0px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .awork {
+            width: 90dvw;
+        }
+    }
+</style>
+<body onload="addContent()">
+    <div class="navbar"></div>
+    <div class="container">
+  <div class="start">
+    <h1>你好<br>我是松佑</h1><br>
+    <h2>一位平面設計師</h2>
+  </div>
+  <div id="works-container"></div>
+</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const response = await fetch('result.json');
+        const works = await response.json();
+        const worksContainer = document.getElementById('works-container');
+  
+        works.forEach(work => {
+          const workDiv = document.createElement('div');
+          workDiv.className = 'awork';
+          workDiv.innerHTML = `
+          <div class="workinfo">
+            <h1 class="work-title">${work.h1}</h1>
+            <h2 class="type">${work.h2}</h2>
+          </div>
+            <div class="BGimg"><img src="${work.imageSrc}" alt="${work.h1}"></div>
+          `;
+          workDiv.addEventListener('click', () => {
+            window.location.href = `./works/${work.file}`;
+          });
+          worksContainer.appendChild(workDiv);
+        });
+      });
+  </script>
+  <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .info {
+        display: flex;
+        flex-direction: row;
+        padding: 10vh 0px;
+        border-radius: 15px 15px 10px 10px;
+        border-top: 1px solid;
+      }
+    
+      .startinfo {
+        display: flex;
+        flex-direction: row;
+        padding: 2em 0px;
+        margin-top: 10vh;
+      }
+
+    .work-title {
+        width: 50%;
+        height: 50dvh;
+        font-size: 10vw;
+        font-weight: bold;
+        color: var(--Maincolor);
+        margin: 0;
+        letter-spacing: -0.1em;
+      }
+    
+      .type {
+        font: 0.8em;
+        text-align: left;
+        width: 50%;
+        letter-spacing: -0.05em;
+      }
+      
+      .work-description {
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        word-wrap: break-word;
+        font-size: 2vw;
+        line-height: 1.5;
+      }
+
+      .e1 {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 20px;
+        padding: 5px 0px 10px 0px;
+        border-top: 1px solid #959595;
+        font-size: 1.8vw;
+        font-weight: 700;
+        word-wrap: break-word;
+        line-height: 1em;
+      }
+
+      .e2 {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0px 0px 20px 0px;
+        font-size: 1.2vw;
+        word-wrap: break-word;
+        line-height: 1em;
+      }
+
+      .work-description p {
+        width: 50%;
+      }
+    
+      h3 {
+        padding: 0px;
+        font-size: 3vw;
+        width: 50%;
+        letter-spacing: -0.05em;
+      }
+    
+      a:link {
+        font-size: 1em;
+        color: var(--Maincolor);
+      }
+    
+      a:visited {
+        font-size: 1em;
+        color: var(--Maincolor);
+      }
+    
+      .work-imageBG {
+        background-color: #000;
+        width: 100%;
+      }
+    
+      .work-image {
+        width: 50%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+      @media (max-width: 768px) {
+        .container {
+            padding: 0 10px;
+          }
+
+        .info {
+            flex-direction: column;
+            padding: 2em 0px;
+          }
+        
+          .work {
+            padding: 0px;
+          }
+
+          .work-title {
+            font-size: 12vw;
+          }
+      
+          h3 {
+              padding: 0px;
+              font-size: 1.8em;
+              width: 100%;
+              margin-bottom: 2em;
+            }
+        
+          .work-description {
+              width: 100%;
+              font-size: 1em;
+          }
+      
+          .type {
+              width: 50%;
+              font: 0.3em;
+            }
+            .e1 {
+              font-size: 1em;
+            }
+            .e2 {
+              font-size: 0.6em;
+            }
+      }
+  </style>
+</head>
+<body onload="addContent()">
+    <div class="navbar"></div>
+  <div class="container">
+    <div class="work">
+        <div class="startinfo">
+            <h1 class="work-title" id="work-title">關於我</h1>
+        </div>
+      <div class="info">
+        <h3><img class="work-image" id="start-work-image" src="myphoto.png" alt="個人照片"></h3>
+        <p class="work-description">
+            你好，我是柯松佑<br>
+            "Radio Wave" is a word I drew for my painting account, based on freehand writing.
+            <br>
+            <br>
+            一位平面設計師
+          </p>
+      </div>
+      <div class="info">
+        <h3>關於<br>Information</h3>
+        <p class="work-description">
+            A graphic designer with five years of experience, specializing in visual design, branding, and advertising design. Possesses excellent creativity and problem-solving skills, capable of independently completing various design projects.
+            <br>
+            <br>
+            具五年經驗的平面設計師，擅長視覺設計、品牌塑造與廣告設計。具備出色的創意與解決問題的能力，能夠獨立完成各種設計專案。
+          </p>
+      </div>
+      <div class="info">
+        <h3>技能<br>Skills</h3>
+        <div class="work-description">
+          <div class="e1">
+            <p>標準字設計</p>
+            <p>LOGOTYPE</p>
+          </div>
+          經歷標準字設計大約三年，然後做很久、很會做經歷，標準字設計大約三年，然後做很久、很會做。
+          <div class="e1">
+            <p>標準字設計</p>
+            <p>LOGOTYPE</p>
+          </div>
+          經歷標準字設計大約三年，然後做很久、很會做經歷，標準字設計大約三年，然後做很久、很會做。
+          <div class="e1">
+            <p>標準字設計</p>
+            <p>LOGOTYPE</p>
+          </div>
+          經歷標準字設計大約三年，然後做很久、很會做經歷，標準字設計大約三年，然後做很久、很會做。
+          <div class="e1">
+            <p>標準字設計</p>
+            <p>LOGOTYPE</p>
+          </div>
+          經歷標準字設計大約三年，然後做很久、很會做經歷，標準字設計大約三年，然後做很久、很會做。
+
+        </div>
+      </div>
+      <div class="info">
+        <h3>經歷<br>Experience</h3>
+          <div class="work-description">
+            <div class="e1">
+                <p>平面設計師</p>
+                <p>ABC設計公司</p>
+                <p>2019年1月 - 至今</p>
+            </div>
+            <div class="e2">
+                <p>Graphic Designer</p>
+                <p>ABC Design Co.</p>
+                <p>January 2019 - Present</p>
+            </div>
+            負責客戶品牌設計，包括標誌、名片及公司宣傳材料。設計並製作線上及線下廣告，提升公司品牌曝光率。與市場部門合作，創作符合市場需求的視覺內容。
+            <br><br>
+            Responsible for client branding, including logos, business cards, 
+            and company promotional materials. Designed and produced online and offline advertisements, enhancing brand exposure. Collaborated with the marketing department to create visual content that meets market demands.
+            <div class="e1">
+              <p>平面設計師</p>
+              <p>ABC設計公司</p>
+              <p>2019年1月 - 至今</p>
+          </div>
+          <div class="e2">
+              <p>Graphic Designer</p>
+              <p>ABC Design Co.</p>
+              <p>January 2019 - Present</p>
+          </div>
+          負責客戶品牌設計，包括標誌、名片及公司宣傳材料。設計並製作線上及線下廣告，提升公司品牌曝光率。與市場部門合作，創作符合市場需求的視覺內容。
+          <br><br>
+          Responsible for client branding, including logos, business cards, 
+          and company promotional materials. Designed and produced online and offline advertisements, enhancing brand exposure. Collaborated with the marketing department to create visual content that meets market demands.
+          </div>
+      </div>
+      <div class="info">
+        <h3>獎項<br>Awards</h3>
+        <div class="work-description">
+              <div class="e1">
+                  <p>2022</p>
+                  <p>金點設計獎</p>
+                  <p>最佳品牌設計</p>
+              </div>
+              <div class="e2">
+                  <p></p>
+                  <p>Golden Pin Design Award</p>
+                  <p>Best Branding Design</p>
+              </div>
+              <div class="e1">
+                <p>2022</p>
+                <p>金點設計獎</p>
+                <p>最佳品牌設計</p>
+            </div>
+            <div class="e2">
+                <p></p>
+                <p>Golden Pin Design Award</p>
+                <p>Best Branding Design</p>
+            </div>
+        </div>
+      </div>
+    </div>
+      <div class="footer">
+        <a href="#work-title" class="work-description">↑Back to Top</a><p class="class="work-description"">© 2024 sonnngyou.ghost All Rights Reserved.</p>
+        
+    </div>
+  </div>
+  </div>
+</body>
+<script src="../navbar.js"></script>
+</html>

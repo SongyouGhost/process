@@ -1,0 +1,136 @@
+  .container {
+    max-width: 100dvw;
+    margin: 100px 0px;
+    padding: 0 0px;
+    transition: all 500ms ease;
+  }
+  
+  .work {
+    border-radius: 0px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 15px;
+    letter-spacing: -1px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    padding: 10vh 0px;
+  }
+
+  .startinfo {
+    display: flex;
+    flex-direction: row;
+    padding: 2em 0px;
+  }
+  
+  .work-title {
+    width: 50%;
+    height: 50dvh;
+    font-size: 10vw;
+    font-weight: bold;
+    color: var(--Maincolor);
+    margin: 0;
+    letter-spacing: -0.1em;
+  }
+
+  .type {
+    font: 0.8em;
+    text-align: left;
+    width: 50%;
+    letter-spacing: -0.05em;
+  }
+  
+  .work-description {
+    width: 50%;
+    word-wrap: break-word;
+    font-size: 2vw;
+    line-height: 1.6;
+  }
+
+  h3 {
+    padding: 0px;
+    font-size: 3vw;
+    width: 50%;
+    letter-spacing: -0.05em;
+  }
+
+  a:link {
+    font-size: 1em;
+    color: var(--Maincolor);
+  }
+
+  a:visited {
+    font-size: 1em;
+    color: var(--Maincolor);
+  }
+
+  .work-imageBG {
+    background-color: #000;
+    width: 100%;
+  }
+
+  .work-image {
+    width: auto;
+    height: 100vh;
+    display: block;
+    object-fit: cover;
+    margin: 1em auto;
+  }
+  
+  /* 媒體查詢，適應不同尺寸的螢幕 */
+  @media (max-width: 768px) {
+    body {
+        line-height: 1.6;
+        margin: 0;
+      }
+      
+    .container {
+      padding: 0 10px;
+    }
+
+    .work {
+        padding: 0px;
+      }
+
+    .info {
+        flex-direction: column;
+        padding: 2em 0px;
+      }
+
+      .footer {
+        flex-direction: column;
+        padding: 2em 0px;
+        text-align: center;
+      }
+  
+    .work-title {
+      font-size: 12vw;
+    }
+
+    h3 {
+        padding: 0px;
+        font-size: 1.8em;
+        width: 100%;
+        margin-bottom: 2em;
+      }
+  
+    .work-description {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .type {
+        width: 50%;
+        font: 0.3em;
+      }
+
+    .work-image {
+        width: 100%;
+        height: auto;
+        margin: 5px auto;
+      }
+
+  }
+  
