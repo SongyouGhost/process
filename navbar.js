@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var aboutLink = document.querySelector('a[href="about.html"]');
 
     if (!fileExists('index.html')) {
-      worksLink.href = '../index.html';
+      worksLink.href = 'process/index.html';
     }
 
     if (!fileExists('about.html')) {
-      aboutLink.href = '../about.html';
+      aboutLink.href = 'process/about.html';
     }
   });
   document.addEventListener('DOMContentLoaded', function() {
