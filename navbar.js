@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const workcon = document.getElementById('works-container');
     navbar.innerHTML = `
     <div class="navbarbackground"></div>
-      <a href="process/index.html">WORKS</a>
-      <a href="process/about.html">ABOUT</a>
+      <a href="index.html">WORKS</a>
+      <a href="about.html">ABOUT</a>
         <div class="radio-container">
             <input type="radio" id="lightMode" name="mode" value="light">
             <label for="lightMode">light</label>
@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var aboutLink = document.querySelector('a[href="about.html"]');
 
     if (!fileExists('index.html')) {
-      worksLink.href = 'process/index.html';
+      worksLink.href = '../index.html';
     }
 
     if (!fileExists('about.html')) {
-      aboutLink.href = 'process/about.html';
+      aboutLink.href = '../about.html';
     }
   });
   document.addEventListener('DOMContentLoaded', function() {
