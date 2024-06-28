@@ -9,7 +9,7 @@
     border-radius: 0px;
     overflow: hidden;
     margin-bottom: 20px;
-    padding: 15px;
+    padding: 3vw;
     letter-spacing: -1px;
   }
 
@@ -27,7 +27,7 @@
   
   .work-title {
     width: 50%;
-    height: 50dvh;
+    height: auto;
     font-size: 10vw;
     font-weight: bold;
     color: var(--Maincolor);
@@ -67,16 +67,32 @@
   }
 
   .work-imageBG {
-    background-color: #000;
+    background-color: var(--workcolor);
+    height: auto;
     width: 100%;
+    margin: 1em auto;
+    align-items: center;
+    overflow: hidden;
   }
 
   .work-image {
     width: auto;
-    height: 100vh;
+    height: 540px;
     display: block;
     object-fit: cover;
-    margin: 1em auto;
+    text-align: center;
+    margin: 0em auto;
+    pointer-events: none;
+  }
+
+  .longimage {
+    width: 100%;
+    height: auto;
+  }
+
+  .widthimage {
+    width: 100%;
+    height: auto;
   }
   
   /* 媒體查詢，適應不同尺寸的螢幕 */

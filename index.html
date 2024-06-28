@@ -26,6 +26,7 @@
         width: 50vw;
         margin: 100px 0px;
         padding: 0 0px;
+        cursor: none;
     }
 
     .start {
@@ -35,10 +36,19 @@
         display: flex;
         flex-direction: column;
         width: 50vw;
-        padding: 0 15px;
+        padding: 0px 15px;
+        pointer-events: none;
+        
     }
     .start h1 {
-        font-size: 10vw;
+        font-size: 5vw;
+    }
+
+    .start h2 {
+      font-size: 2.5vw;
+      line-height: 1.5;
+      font-weight: 400;
+      margin-top: 10px;
     }
     .awork {
         position: relative;
@@ -70,28 +80,30 @@
 
     .awork h1 {
         font-size: 2em;
-        font-weight: 700;
+        font-weight: 900;
     }
 
     .awork h2 {
         position: absolute;
         font-size: 2em;
-        font-weight: 300;
+        font-weight: 100;
         left: 50%;
     }
 
     .awork .BGimg {
         background-color: #000;
         width: 100%;
-        height: 300px;
+        height: 400px;
         border-radius: 0px 0px 8px 8px;
         text-align: center;
         overflow: hidden;
     }
 
     .awork img{
+      object-position:center center;
+        max-width: 100%;
         width: auto;
-        height: 300px;
+        height: 400px;
         object-fit: cover;
     }
 
@@ -106,19 +118,34 @@
             width: 100%;
             padding: 10px 20px;
             right: auto;
-            margin: 20px 0px;
+            margin: 40vh 0px;
         }
 
         .start {
-            position: relative;
-            justify-content: center;
-            top: auto;
-            height: 50vh;
-            margin: 100px 0px;
+            position: fixed;
+            justify-content: start;
+            background-color: var(--BGcolor);
+            border-radius: 15px;
+            top: 0px;
+            height: auto;
+            left: 20px;
+            right: 20px;
             display: flex;
             flex-direction: column;
-            width: 100%;
-            padding: 0 15px;
+            width: auto;
+            padding: 15px 15px;
+            z-index: 10;
+            border: 1px solid var(--Maincolor);
+        }
+
+        .start h1 {
+          font-size: 0.7em;
+          font-weight: 800;
+        }
+
+        .start h2 {
+          font-size: 0.5em;
+          font-weight: 300;
         }
 
         .awork {
@@ -130,8 +157,10 @@
     <div class="navbar"></div>
     <div class="container">
   <div class="start">
-    <h1>你好<br>我是松佑</h1><br>
-    <h2>一位平面設計師</h2>
+    <h1>嗨，我是松佑(幽)</h1>
+    <h2>現居新北，對創作充滿熱情，熱愛觀賞藝術與設計展覽，並對哲學有濃厚興趣。曾擔任美宣長，在實習期間專注於品牌研究和策展實務。
+      在設計創作過程中喜歡不斷嘗試新的可能性。以作字設計為核心、跨領域發展的設計師，擁有豐富的實踐經驗和獨特的思維模式。<br>
+    </h2>
   </div>
   <div id="works-container"></div>
 </div>

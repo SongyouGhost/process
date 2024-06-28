@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const content = document.querySelector('.container');
-    const start = document.querySelector('.start');
-    const workcon = document.getElementById('works-container');
     navbar.innerHTML = `
     <div class="navbarbackground"></div>
       <a href="index.html">WORKS</a>
@@ -15,20 +13,62 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">&#9776;</a>
     `;
-  
     window.toggleNavbar = function() {
-        const navbar = document.querySelector('.navbar');
-        const icon = navbar.querySelector('.icon');
-        if (navbar.className === 'navbar') {
-          navbar.className += ' responsive';
-          icon.innerHTML = '&#10005;'; // 顯示叉叉圖標
-          content.classList.add('blur'); // 增加模糊效果
-        } else {
-          navbar.className = 'navbar';
-          icon.innerHTML = '&#9776;'; // 顯示漢堡圖標
-          content.classList.remove('blur'); // 移除模糊效果
-        }
-      };
+      const navbar = document.querySelector('.navbar');
+      const icon = navbar.querySelector('.icon');
+      if (navbar.className === 'navbar') {
+        navbar.className += ' responsive';
+        icon.innerHTML = '&#10005;'; // 顯示叉叉圖標
+        content.classList.add('blur'); // 增加模糊效果
+      } else {
+        navbar.className = 'navbar';
+        icon.innerHTML = '&#9776;'; // 顯示漢堡圖標
+        content.classList.remove('blur'); // 移除模糊效果
+      }
+    };
+    
+    const footer = document.querySelector('.footer');
+    footer.innerHTML = `
+    <a href="#work-title" class="work-description">↑Back to Top</a>
+        <div class="class="work-description"">
+        <div class="social-icons">
+          <a href="https://www.behance.net/sonnngyoughost"><svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            viewBox="-127 175.8 256 162.2" xml:space="preserve">
+         <path d="M-9.5,192.7c4.8,6.7,7.2,14.8,7.2,24.2c0,9.6-2.4,17.4-7.3,23.3c-2.7,3.3-6.8,6.3-12.1,9c8.1,3,14.2,7.6,18.3,14
+           c4.1,6.4,6.2,14.1,6.2,23.2c0,9.4-2.3,17.8-7.1,25.2c-3,4.9-6.7,9.1-11.2,12.4c-5,3.9-11,6.5-17.9,8c-6.9,1.4-14.3,2.1-22.4,2.1
+           H-127V175.8h76.5C-31.3,176.1-17.6,181.7-9.5,192.7z M-95.5,203.3v34.9H-57c6.9,0,12.4-1.3,16.7-3.9s6.4-7.3,6.4-13.9
+           c0-7.4-2.8-12.2-8.5-14.6c-4.9-1.6-11.1-2.5-18.7-2.5H-95.5z M-95.5,264.3v42.2H-57c6.9,0,12.2-0.9,16-2.8c7-3.5,10.4-10,10.4-19.7
+           c0-8.2-3.3-13.9-10.1-17c-3.8-1.7-9-2.6-15.8-2.7H-95.5z M98.4,219.4c8.2,3.6,14.9,9.4,20.2,17.3c4.8,6.9,7.9,15,9.3,24.2
+           c0.8,5.4,1.2,13.1,1,23.2H43.7c0.5,11.7,4.5,20,12.2,24.7c4.7,2.9,10.3,4.4,16.9,4.4c6.9,0,12.6-1.8,17-5.4c2.4-1.9,4.5-4.6,6.3-8.1
+           h31.2c-0.8,6.9-4.6,14-11.3,21.2C105.5,332.3,90.9,338,72,338c-15.6,0-29.3-4.8-41.2-14.4c-11.9-9.6-17.9-25.2-17.9-46.8
+           c0-20.3,5.4-35.8,16.1-46.6C39.8,219.4,53.7,214,70.8,214C81.1,213.9,90.3,215.7,98.4,219.4z M52.7,245.8c-4.3,4.5-7,10.5-8.2,18.1
+           h52.7c-0.6-8.1-3.3-14.3-8.1-18.5c-4.9-4.2-11-6.3-18.2-6.3C63.1,239.1,57,241.4,52.7,245.8z M104.4,183.2H36.6v19.7h67.8V183.2z"/>
+         </svg></a>
+        <a href="https://www.instagram.com/sonnngyou.ghost/">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            width="800px" height="800px" viewBox="0 0 169.063 169.063"
+            xml:space="preserve">
+            <path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+              c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+              c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+              c17.455,0,31.656,14.201,31.656,31.655V122.407z"/>
+            <path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+              C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+              c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"/>
+            <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+              c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+              C135.661,29.421,132.821,28.251,129.921,28.251z"/>
+          </svg></a>
+          <a href="https://www.threads.net/@sonnngyou.ghost"><svg aria-label="Threads" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg></a>
+          <a href="https://medium.com/@sam883187"><svg width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" fill="none"/>
+                <path d="M2,40.2l5.3-6.1v-21L2.6,7.8V7H15.1l10,21.2L33.9,7H46v.8l-4,3.7V36.6l4,3.6V41H28.6v-.8l4.1-4.8V16.6L22.7,41H21.4L9.8,17.1V33.9l5.3,6.3V41H2Z"/>
+                </svg></a>
+        </div>
+      </div>
+    `;
+  
+    
   });
   // 檢查文件是否存在的函數
   function fileExists(url) {
@@ -143,5 +183,26 @@ link.rel = 'icon';
 link.href = '../ghostlogo.png'; // 更換為新的 favicon 圖片路徑
 document.head.appendChild(link);
 
+// 取得長圖片改為滿版
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  
+  images.forEach(function(img) {
+      function checkImageDimensions() {
+          if (img.complete) {
+              if (img.height > img.width + 20) {
+                  img.classList.add('longimage');
+              }
+              if (img.width > img.height + 100) {
+                  img.classList.add('widthimage');
+              }
+          } else {
+              img.addEventListener('load', checkImageDimensions);
+          }
+      }
+      
+      checkImageDimensions();
+  });
+});
 
   
