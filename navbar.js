@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <rect width="48" height="48" fill="none"/>
                 <path d="M2,40.2l5.3-6.1v-21L2.6,7.8V7H15.1l10,21.2L33.9,7H46v.8l-4,3.7V36.6l4,3.6V41H28.6v-.8l4.1-4.8V16.6L22.7,41H21.4L9.8,17.1V33.9l5.3,6.3V41H2Z"/>
                 </svg></a>
+                <a href="https://drive.google.com/file/d/1GOJs5EFhY47VNWHVjo0Is6ACYrt4aN9o/view?usp=sharing">PDF作品集</a>
         </div>
       </div>
     `;
