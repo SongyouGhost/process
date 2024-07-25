@@ -44,7 +44,7 @@
 
 .ghost {
   position: fixed;
-  opacity: 0.7;
+  opacity: 0.9;
     left: var(--mouseX);
     top: var(--mouseY);
     transition: all 500ms ease-out, background-color 10ms linear; 

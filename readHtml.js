@@ -31,13 +31,14 @@ fs.readdir(folderPath, (err, files) => {
         // 提取 <h1> 和 <h2> 內容
         const h1 = document.querySelector('h1.work-title') ? document.querySelector('h1.work-title').textContent : '';
         const h2 = document.querySelector('h2.type') ? document.querySelector('h2.type').textContent : '';
+        const h2b = document.querySelector('h2.type2') ? document.querySelector('h2.type2').textContent : '';
 
         // 提取圖片的檔名並構建路徑
         const imageElement = document.querySelector('#start-work-image');
         const imageSrc = imageElement ? `works/img/${path.basename(imageElement.src)}` : '';
 
         // 構建結果對象
-        const result = { h1, h2, imageSrc, file };
+        const result = { h1, h2, h2b, imageSrc, file };
 
         // 讀取現有的結果文件內容
         const existingData = JSON.parse(fs.readFileSync(resultFilePath, 'utf8'));

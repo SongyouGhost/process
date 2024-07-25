@@ -41,7 +41,7 @@
       .work-description {
         display: flex;
         flex-direction: column;
-        width: 50vw;
+        width: 48dvw;
         word-wrap: break-word;
         font-size: 2vw;
         line-height: 1.5;
@@ -102,6 +102,71 @@
         display: block;
         object-fit: cover;
       }
+
+      select {
+        background-color: var(--Maincolor);
+        color: var(--BGcolor);
+        border: none;
+        font-size: 4vw;
+        font-weight: 900;
+        border-radius: 5px;
+        box-shadow: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    }
+    select:hover {
+        border-color: var(--Maincolor);
+    }
+    select:focus {
+        border-color: #aaa;
+        box-shadow: var(--Maincolor);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: var(--BGcolor);
+        outline: none;
+    }
+
+    select option {
+      font-size: 1rem;
+      background-color: var(--Maincolor);
+      color: var(--BGcolor);
+      position: absolute;
+      border-radius: 0 0 5px 5px;
+      border-top: none;
+      box-shadow: none;
+  }
+  select option:nth-child {
+    background-color: var(--Maincolor);
+    color: var(--BGcolor);
+  }
+  /* 嘗試覆蓋hover狀態的樣式 */
+  select option:hover,
+  select option:focus {
+      background-color: #f0f0f0 !important;
+      color: #000 !important;
+  }
+
+  select::-webkit-scrollbar {
+    width: 5px;
+}
+select::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+select::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+}
+select::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+  #text {
+    white-space: pre-wrap; /* 允許顯示換行 */
+  }
+
       @media (max-width: 768px) {
         .container {
             padding: 0 10px;
@@ -131,6 +196,19 @@
               width: 100%;
               font-size: 1em;
           }
+
+          select {
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+        select:focus {
+          color: var(--BGcolor);
+        }
+
+        select option {
+          font-size: 1.2rem;
+          
+      }
       
           .type {
               width: 50%;
@@ -155,52 +233,50 @@
       <div class="info">
         <h3><img class="work-image" id="start-work-image" src="myphoto.png" alt="個人照片"></h3>
         <p class="work-description">
-          嗨，我是柯松佑(幽)，2002年出生，畢業於南臺科大視覺傳達設計系，現居住在新北三重。
+          嗨，我是柯松佑(幽)，2002年出生，畢業於南臺科大視覺傳達設計系，現居住在新北三重。<br><br>
+          我是一位擅長創作視覺藝術的設計師，其中又以標準字更為專長。
+          興趣廣泛，喜愛看線上課程與藝術與設計展覽，對各種新興事物充滿好奇，如心理學及哲學、滑板等。
           </p>
       </div>
       <div class="info">
-        <h3>關於<br>Information</h3>
-        <p class="work-description">
-            喜愛看線上課程與藝術與設計展覽，對各種新興事物充滿好奇，如星座、心理學、滑板及哲學等。
-          </p>
+        <h3>關於
+          <select id="dropdown">
+            <option class="option" value="">選擇</option>
+            <option class="option" value="1">短期人生規劃</option>
+            <option class="option" value="2">人生願景</option>
+            <option class="option" value="3">音樂</option>
+            <option class="option" value="4">哲學</option>
+            <option class="option" value="5">繪畫</option>
+            <option class="option" value="6">滑板</option>
+            <option class="option" value="7">閱讀</option>
+            <option class="option" value="8">Podcast</option>
+            <option class="option" value="9">Vtuber</option>
+            <option class="option" value="10">動漫畫</option>
+            <option class="option" value="11">喜歡的設計師</option>
+            <option class="option" value="12">優缺點</option>
+            <option class="option" value="13">對AI看法與協作</option>
+            <option class="option" value="14">我的一天</option>
+          </select><br>Information<br> 
+        </h3>
+        
+        <p class="work-description" id="text">點擊「選擇」，來想了解關於我的主題</p>
       </div>
       <div class="info">
         <h3>技能<br>Skills</h3>
         <div class="work-description">
-          <div class="e1">
-            <p>標準字設計</p>
-            <p>Logotype</p>
-          </div>
+          <div class="e1"><p>標準字設計</p><p>Logotype</p></div>
           高中二年級時開始對字體設計產生興趣，五年內完成了上百個字體設計作品，這也是我在 Instagram 上主要展示的內容。
-          <div class="e1">
-            <p>視覺設計</p>
-            <p>Visual Design </p>
-          </div>
+          <div class="e1"><p>視覺設計</p><p>Visual Design </p></div>
           每年持續精進視覺設計的基本功，並不斷探索和實驗不同的視覺呈現方式。
-          <div class="e1">
-            <p>品牌識別</p>
-            <p>Brand Identity</p>
-          </div>
+          <div class="e1"><p>品牌識別</p><p>Brand Identity</p></div>
           在實習期間接受了嚴謹的品牌策略訓練，認識到品牌世界的廣大，並持續探索相關知識。
-          <div class="e1">
-            <p>印刷設計</p>
-            <p>Print Design</p>
-          </div>
+          <div class="e1"><p>印刷設計</p><p>Print Design</p></div>
           探索各種印刷技術，從網版印刷、RISO、特殊色到各種選紙與裝幀技術，致力於以最少的成本達到最佳的印刷效果。
-          <div class="e1">
-            <p>編排設計</p>
-            <p>Typography</p>
-          </div>
+          <div class="e1"><p>編排設計</p><p>Typography</p></div>
           具備紮實的編排設計基本功，精通網格操作，偏愛國際主義風格。
-          <div class="e1">
-            <p>插畫設計</p>
-            <p>illustration</p>
-          </div>
+          <div class="e1"><p>插畫設計</p><p>illustration</p></div>
           平時興趣是畫動畫，有紮實的繪畫基本功。
-          <div class="e1">
-            <p>網站設計</p>
-            <p>Website Design</p>
-          </div>
+          <div class="e1"><p>網站設計</p><p>Website Design</p></div>
           熟練使用Webflow，並精通HTML和CSS代碼，同時具備JavaScript基礎，能夠獨立進行前端切版。
         </div>
       </div>
@@ -208,97 +284,89 @@
         <h3>經歷<br>Experience</h3>
           <div class="work-description">
             <!--從這邊-->
-            <div class="e1">
-              <p>美宣長</p>
-              <p>視傳系學會</p>
-              <p>2020</p>
-          </div>
-          <div class="e2">
-              <p>Design Officer</p>
-              <p>Student Association of Department of VCD</p>
-              <p>2024</p>
-          </div>
+            <div class="e1"><p>美宣長</p><p>視傳系學會</p><p>2021年9月 至 2022年7月</p></div>
+            <div class="e2"><p>Design Officer</p><p>Student Association of Department of VCD</p><p>Sep 2021 - Jul 2022</p></div>
           負責系學會的主視覺設計與編排。
             <!--從這邊-->
-            <div class="e1">
-                <p>實習生</p>
-                <p>臺北藝術指導協會</p>
-                <p>2023年暑期</p>
-            </div>
-            <div class="e2">
-                <p>Inter</p>
-                <p>TPADD Inter plan</p>
-                <p>2023 summer</p>
-            </div>
+            <div class="e1"><p>實習生</p><p>臺北藝術指導協會</p><p>2023年暑期</p></div>
+            <div class="e2"><p>Inter</p><p>TPADD Inter plan</p><p>2023 summer</p></div>
             參加臺北藝術指導協會的暑期實習計畫，在優仕創意和草字頭實習，專注於品牌研究和策展實務。
-            <div class="e1">
-              <p>實習生</p>
-              <p>優仕創意</p>
-              <p>2023年7月 - 8月</p>
-          </div>
-          <div class="e2">
-              <p>Inter</p>
-              <p>StudioPros</p>
-              <p>2023.7 - 8</p>
-          </div>
+            <div class="e1"><p>實習生</p><p>優仕創意</p><p>2023年7月 至 8月</p></div>
+            <div class="e2"><p>Inter</p><p>StudioPros</p><p>Jul 2023 - Aug 2023</p></div>
           協助公司製作網站作品展示。
-           <!--從這邊-->
-           <div class="e1">
-            <p>組長</p>
-            <p>提報形象組</p>
-            <p>2024</p>
-        </div>
-        <div class="e2">
-            <p>leader</p>
-            <p>Report Vision Team</p>
-            <p>2024</p>
-        </div>
-        籌備每次畢製提報主視覺。
-        <!--到這邊-->
-          <div class="e1">
-            <p>個人接案與自媒體</p>
-            <p></p>
-            <p>2022 - 至今</p>
-        </div>
-        <div class="e2">
-            <p>Freelancer and Media</p>
-            <p></p>
-            <p>2020 - now</p>
-        </div>
-        於社群平台活躍，並且不斷嘗試接案。
+        <!--從這邊-->
+          <div class="e1"><p>組長</p><p>提報形象組</p><p>2023年9月 至 2024年7月</p></div>
+          <div class="e2"><p>leader</p><p>Report Vision Team</p><p>Sep 2023 - Jul 2024</p></div>
+          籌備每次畢製提報主視覺。
+          <!--到這邊-->
+          <div class="e1"><p>個人接案與自媒體</p><p></p><p>2022至今</p></div>
+          <div class="e2"><p>Freelancer and Media</p><p></p>p>2020 - now</p></div>
+          於社群平台活躍，並且不斷嘗試接案。
           </div>
       </div>
       <div class="info">
         <h3>獎項<br>Awards</h3>
         <div class="work-description">
-              <div class="e1">
-                  <p>2018</p>
-                  <p>圖紋之美海報比賽</p>
-                  <p>銀賞</p>
-              </div>
-              <div class="e2">
-                  <p></p>
-                  <p>Art of Formosan Aborigines</p>
-                  <p>Silver</p>
-              </div>
+              <div class="e1"><p>2018</p><p>圖紋之美海報比賽</p><p>銀賞</p></div>
+              <div class="e2"><p></p><p>Art of Formosan Aborigines</p><p>Silver</p>
         </div>
+      </div>
       </div>
       <div class="info">
         <h3>聯絡我<br>Contact</h3>
         <div class="work-description">
-              <div class="e1">
-                  <p>E-mail</p>
-                  <p>sam883187@gmail.com</p>
-              </div>
+              <div class="e1"><p>E-mail</p><p>sam883187@gmail.com</p></div>
         </div>
       </div>
     </div>
       <div class="footer">
         <a href="#work-title" class="work-description">↑Back to Top</a><p class="class="work-description"">© 2024 sonnngyou.ghost All Rights Reserved.</p>
-        
     </div>
   </div>
   </div>
 </body>
 <script src="navbar.js"></script>
+<script>
+  const dropdown = document.getElementById('dropdown');
+  const text = document.getElementById('text');
+  const texts = {
+    '1': `對自己的規劃大約三至五年，在公司體制中成長，有著更多實務經驗，在有空間繼續學習並以累積不同有趣體驗為目的，在這樣的前提下希望能好好的賺錢。`,
+    '2': `在國中時期，最喜歡的創作者是米津玄師、はるまきごはん，會從無到有的自己處理所有音樂和影像，並創造出有共鳴的故事，當時的我感到共鳴。
+
+即便不是現在，但終有一天成為全能的創作者，希望無論載體為何，都希望能持續打造能夠令人感動、印象深刻，甚至也會燃起創作動力的作品。`,
+    '3': `喜歡的音樂，對我而言很多時間都泡 Vocaloid 初音未來那邊，但現在也有很多偏日本流行音樂，像是米津玄師、KingGun、藤井風、春野。
+
+並且臺灣的獨立音樂也會聽。比較喜歡的大概是草東沒有派對、deca joins、康斯坦的變化球、Vast&Hazy、淺提、當代電影大師、椅子樂團，有時候也會跑去聽EDM或是古典音樂等等，算是音樂雜食動物。
+
+要說到現在很喜歡的歌曲，喜歡到足以改變生活，大概是 《熱異常 / いよわ》 和 《地球をあげる / はるまきごはん》。`,
+'4': `會開始去讀哲學，最開始的起點已經不記得了，但就像笛卡兒意識到世界也許是不存在，也許世界本身就是假的，進而開始去思考，並且越看越沉迷。說到喜歡的哲學家是維根斯坦和叔本華。
+
+即便現在看的大多是網路文章及二手資料，但還是有一些很喜歡的書：《孤獨的哲學》、《叔本華隨筆集》、《作為意志和表象的世界》。`,
+'5': `從國中就開始畫畫，喜歡看動畫，在那之後除了紮實的練習繪畫，喜歡畫宅宅的動漫人物爽圖，不過在設計作品上也喜歡應用繪畫技能來做為形式。`,
+'6': `大學一年級的時候，夢想著能夠用滑板遊歷台南，或是在上下課的時候滑滑板來上下課，不只是很酷，還很方便。
+
+不過隨著設計忙碌，到後來只有運送行李時，會把行李箱放在滑板上方便運送，即便心中還有滑板夢，但似乎是更以後的事。`,
+'7': `我渴望全世界的知識，喜歡閱讀，但不限於紙本，在閱讀之後，除了每天發 Threads ，也經營電子報「漂幽部」，紀錄學習到的內容。
+
+我的閱讀類型，大多是設計、藝術類，接著是商業類、心理學（大多是溝通），及哲學。`,
+'8': `平常都會戴著耳機，每天都在 FOMO (錯失恐懼)，害怕在知識有什麼是我自己不知道的，並且自己也很常忽然陷入想事情的漩渦，一直聽 Podcast 也助於我活在當下。`,
+'9': `平常有時會看一些烤肉片段，直播只會看歌回，搭配工作的時候使用一邊聽。
+
+其中更喜歡音樂類型的，像是花譜、理芽、世界情緒、長賴有花，最近則是很喜歡 CULUA。`,
+'10': `無聊的時候喜歡看動畫，入坑作是 K-ON，至今最喜歡的作品是《漂流少年》、《搖滾孤獨》。`,
+'11': `何廷安、彭星凱
+對於建構理論，並應用進設計中，這件事很有共鳴。`,
+'12': `我自己有選擇性緘默，這是一種天生的心理殘障，類似亞斯伯格，是由過度焦慮引起的，除了只要喝酒、吃藥讓自己不焦慮就會變成比較正常的人類，剩下許多症狀都會與亞斯伯格相同，由於這種天生殘障相對罕見，不容易找到資料，大多對此的認識也來源於亞斯。
+
+對我而言這同時是優點，也是缺點。
+像是容易專注且興趣狹隘，平時一次只能處理好一件有興趣的事，遇到當下沒興趣的事情就會容易分心，但也因此能比起其他人更心無旁騖專注在自己的興趣上，容易沉迷。`,
+'13': `自生成式AI蓬勃發展以來，從GPT3就開始關注，在 Midjourney V2時期開始嘗試使用，在那之後更積極在創作中導入AI協作，並持續關注AI的發展。
+`,
+'14': `我早上起來會先喝一杯咖啡，平常很容易睏，接下來就會慢跑去買早餐。接著會開始接續昨天處理一半的事項（約三小時），完結後就開始處理今天的主要工作（四小時），結束後我會隨機挑一件有興趣的事來做直到晚上睡覺。中途的盥洗就是休息時間。`,
+};
+
+  dropdown.addEventListener('change', function() {
+      text.textContent = texts[this.value] || '選擇想了解關於我的主題';
+  });
+</script>
 </html>

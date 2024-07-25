@@ -37,8 +37,17 @@
 
   .type {
     font: 0.8em;
+    line-height: 1.2;
     text-align: left;
-    width: 50%;
+    width: 25%;
+    letter-spacing: -0.05em;
+  }
+
+  .type2 {
+    font: 0.8em;
+    line-height: 1.2;
+    text-align: left;
+    width: 25%;
     letter-spacing: -0.05em;
   }
   
@@ -64,6 +73,17 @@
   a:visited {
     font-size: 1em;
     color: var(--Maincolor);
+  }
+
+  .work-gridBG {
+    background-color: var(--workcolor);
+    width: auto;
+    margin: 1em auto;
+    overflow: hidden;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
 
   .work-imageBG {
@@ -145,7 +165,7 @@
     .work-image {
         width: 100%;
         height: auto;
-        margin: 5px auto;
+        margin: auto;
       }
 
   }

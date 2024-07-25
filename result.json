@@ -1,32 +1,51 @@
 [
   {
     "h1": "電波",
-    "h2": "創作",
+    "h2": "標準字設計",
+    "h2b": "個人創作",
     "imageSrc": "works/img/RadioType2.png",
     "file": "RedioType.html"
   },
   {
-    "h1": "nutviGO",
-    "h2": "品牌識別",
-    "imageSrc": "works/img/NutviGO1.png",
-    "file": "nutviGO.html"
+    "h1": "像素狗狗",
+    "h2": "繪畫",
+    "h2b": "商業案件",
+    "imageSrc": "works/img/PixelDog1.jpg",
+    "file": "PixelDog.html"
   },
   {
     "h1": "漂幽部",
     "h2": "品牌識別",
+    "h2b": "個人創作",
     "imageSrc": "works/img/PiaoyouBook1.png",
     "file": "PiaoyouBook.html"
   },
   {
+    "h1": "成長的過程",
+    "h2": "數位封面",
+    "h2b": "商業案件",
+    "imageSrc": "works/img/AndrewShenyoung1.jpg",
+    "file": "AndrewShenyoung.html"
+  },
+  {
     "h1": "深夜做稿俱樂部",
-    "h2": "服飾",
+    "h2": "標準字設計",
+    "h2b": "個人創作",
     "imageSrc": "works/img/NightCludTshirt1.gif",
     "file": "NightCludTshirt.html"
   },
   {
-    "h1": "成長的過程",
-    "h2": "數位封面",
-    "imageSrc": "works/img/AndrewShenyoung1.jpg",
-    "file": "AndrewShenyoung.html"
+    "h1": "nutviGO",
+    "h2": "品牌識別",
+    "h2b": "個人創作",
+    "imageSrc": "works/img/NutviGO1.png",
+    "file": "nutviGO.html"
+  },
+  {
+    "h1": "扭曲的王冠",
+    "h2": "視覺藝術",
+    "h2b": "個人創作",
+    "imageSrc": "works/img/TwistedCrown_1.png",
+    "file": "TwistedCrown.html"
   }
 ]
