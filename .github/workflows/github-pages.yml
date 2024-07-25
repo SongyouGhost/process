@@ -1,0 +1,31 @@
+# 在您的 repository 根目錄創建這個文件：.github/workflows/github-pages.yml
+
+   name: GitHub Pages
+
+   on:
+     push:
+       branches:
+         - main  # 假設您的主分支名為 main，如果是 master 請修改
+
+   jobs:
+     deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v2
+
+         - name: Setup Node
+           uses: actions/setup-node@v2
+           with:
+             node-version: '14'
+
+         - name: Create CNAME file
+           run: |
+             echo "portfolio.sonnngyou.com" > CNAME
+             echo "youerg.sonnngyou.com" >> CNAME
+
+         - name: Deploy
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: .
+   
