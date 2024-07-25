@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幽之漠</title>
+    <meta http-equiv="refresh" content="0; url=https://youerg.sonnngyou.com">
+    <link rel="icon" type="image/png" href="youerglogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <style>
+        body { 
+        margin: 0;
+        font-family: 'DotGothic16','Noto Sans TC', sans-serif;
+        font-size: 1.3rem;
+        background-color: black;
+        }
+        canvas { display: block; }
+        #loadingScreen {
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            bottom: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #progressBar {
+            width: 80%;
+            height: 20px;
+            background-color: #D2281E;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        #progressBar > div {
+            width: 0%;
+            height: 100%;
+            background-color: #d5d5d5;
+            transition: width 100ms;
+        }
+        #progressText {
+            color: rgb(200, 200, 200);
+        }
+        #scoreDisplay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: rgb(223, 223, 223);
+            padding: 5px 10px;
+            font-weight: 400;
+        }
+        #monolithInfo {
+            background-color: black;
+            position: absolute;
+            display: inline-flex;
+            flex-direction: column;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(212, 212, 212);
+            text-align: center;
+            justify-items: center;
+            z-index: 2000;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        #monolithImage {
+            max-width: auto;
+            height: 80vh;
+        }
+        .monoText {
+            margin: auto;
+            width: 100%;
+            min-width: 5rem;
+            max-width: 25rem;
+            text-align: center;
+            justify-items: center;
+        }
+        #monolithText {
+            display: inline-block;
+            text-align: start;
+            line-height: 1.4;
+            word-wrap: break-word;
+            padding: 0px 0px 10px 0px;
+        }
+        #videoWindow {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+        #videoWindow::before {
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 100%);
+            filter: blur(15px);
+        }
+        #videoWindow video {
+            width: 80%;
+            height: 80%;
+        }
+        #videoWindow button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        #videoWindow img {
+            width: 2rem; /* 調整圖片寬度 */
+            height: auto;
+        }
+        #finishButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        #finishButton img {
+            width: 2rem; /* 調整圖片寬度 */
+            height: auto;
+        }
+        #subtitleContainer {
+            position: absolute;
+            bottom: 8%;
+            width: 100dvw;
+            text-align: center;
+            z-index: 1000;
+            color: rgb(191, 191, 191);
+            font-size: 1.5rem;
+            pointer-events: none;
+        }
+        
+        #subtitleText {
+            margin: 0;
+        }        
+        #toggleSoundButton {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            padding: 10px;
+            width: 2rem;
+            height: auto;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        #toggleSoundButton:hover {
+            filter: blur(3px);
+        }
+        #tutorialOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 100;
+        }
+        
+        #tutorialContent {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        #tutorialContent object{
+            width: 30dvw;
+        }
+        .debug {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="loadingScreen">
+        <div id="progressBar"><div style="width: 0%;"></div></div>
+        <div id="progressText">0%</div>
+    </div>
+    <div id="scoreDisplay"></div>
+    <div id="monolithInfo" style="display: none;"><!--石碑-->
+        <img id="monolithImage" src="" alt="Monolith Image">
+        <div class="monoText"><p id="monolithText"></p></div>
+    </div>
+    <div id="subtitleContainer" style="display: none;">
+        <p id="subtitleText"></p>
+    </div>    
+    <img id="toggleSoundButton" src="musicon.svg" alt="Toggle Sound" onclick="toggleSound()">
+    <!--<button id="toggleSoundButton" onclick="toggleSound()"></button>-->
+    <div id="tutorialOverlay">
+        <div id="tutorialContent">
+            <object id="svgObject" type="image/svg+xml" data="logotype.svg">
+                Your browser does not support SVG
+            </object>
+            <p>使用 W、A、S、D 或 方向鍵 移動</p>
+            <p style="font-size: 0.5em;">打開聲音來獲得最佳遊戲體驗!</p>
+        </div>
+    </div>
+    <div id="videoWindow">
+        <button onclick="closeVideoWindow()"><img src="close.svg" alt="關閉"></button>
+        <video id="videoPlayer">
+            <source src="finalvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <div class="debug"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/shaders/PixelShader.js"></script>
+
+    <script>
+         // 等待 SVG 加載完成後進行操作
+         document.getElementById('svgObject').addEventListener('load', function() {
+            // 獲取嵌入的 SVG 文檔
+            const svgDoc = this.contentDocument;
+            // 獲取 SVG 根元素
+            const svgElement = svgDoc.querySelector('svg');
+            // 將填色設置為灰色
+            svgElement.style.fill = 'rgb(250, 250, 250)';
+        });
+    </script>
+    <!-- 然後加載主腳本 -->
+    <script src="main.js"></script>
+    <!-- 加載故事腳本 -->
+    <script src="story.js"></script>
+</body>
+</html>
