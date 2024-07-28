@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const content = document.querySelector('.container');
     navbar.innerHTML = `
     <div class="navbarbackground"></div>
-      <a href="index">WORKS</a>
-      <a href="about">ABOUT</a>
+      <a href="portfolio.sonnngyou.com/index">WORKS</a>
+      <a href="portfolio.sonnngyou.com/about">ABOUT</a>
         <div class="radio-container">
             <input type="radio" id="lightMode" name="mode" value="light">
             <label for="lightMode">light</label>
