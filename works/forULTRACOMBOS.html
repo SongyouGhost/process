@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>給叁式ULTRACOMBOS</title>
+  <link rel="stylesheet" href="workstyles.css">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<style>
+  :root {
+    --Mcolor:#adadad;
+    --Bcolor: #000;
+    --workcolor: #000000;
+  }
+
+  body {
+    background-color: var(--Bcolor);
+    color: var(--Mcolor);
+    cursor: auto;
+  }
+
+  #nameInput {
+    background-color: var(--Bcolor);
+    color: var(--Mcolor);
+    display: inline-block;
+    width: 12rem;
+    padding: 10px;
+    font-size: 2vw;
+    border: 2px solid var(--Bcolor);
+    border-radius: 5px;
+    text-decoration: underline;
+    transition: border-color 0.3s ease;
+}
+
+#nameInput:focus {
+    border-color: var(--Mcolor);
+    outline: none;
+}
+
+.work-imageBG {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+.work-imageBG.visible {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.work-description {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+
+.work-description.visible {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.work-title {
+  color: var(--Mcolor);
+}
+
+.mouse {
+  display: flex;
+  position: fixed;
+  left: var(--mouseX);
+  top: var(--mouseY);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: var(--Bcolor);
+  transition: all 10ms ease-out, background-color 10ms linear;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: 2px double var(--Mcolor);
+}
+
+.ghost {
+  display: none;
+position: fixed;
+opacity: 0.9;
+  left: var(--mouseX);
+  top: var(--mouseY);
+  transition: all 500ms ease-out, background-color 10ms linear; 
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  overflow: visible;
+  width: 100px;
+  height: auto;
+}
+
+.footer {
+  background-color: var(--Bcolor);
+  color: var(--Mcolor);
+}
+.footer svg {
+  fill: var(--Mcolor);
+}
+
+@media (max-width: 768px) {
+  #nameInput {
+    font-size: 1rem;
+  }
+}
+</style>
+<body onload="addContent()">
+    <!-- <div class="navbar"></div> -->
+  <div class="container">
+    <div class="work">
+        <div class="startinfo">
+            <h1 class="work-title" id="work-title"></h1>
+            <h2 class="type">柯松佑作品集</h2>
+            <h2 class="type2">(幽)</h2>
+        </div>
+      <div class="info">
+        <h3 id="1h3"></h3><br>
+        <p class="work-description">
+          叁式的<input type="text" id="nameInput" placeholder="填寫您的名字">，您好<br>
+          現在的時間是 <span id="time"></span>，正期待著您打開作品集！
+          <br><br>
+          先簡單自我介紹，嗨，我是柯松佑，2002年出生，畢業於南臺科大視覺傳達設計系，現居住在新北三重。<br><br>
+          我是一位擅長創作視覺藝術的設計師，其中又以標準字更為專長。興趣廣泛，喜愛看線上課程與藝術與設計展覽，對各種新興事物充滿好奇，如心理學及哲學、滑板等。
+          </p>
+      </div>
+      <div class="work-imageBG"><img class="work-image" id="start-work-image" src="img/pocover.png" alt="作品標題圖片"></div>
+      <div class="info">
+        <p class="work-description">
+          首先。<span id="greeting"></span>
+          我想和你介紹的第一個作品<br><br>
+          在畢業的這一年，AI爆發讓我得以更快速的學習程式語言，一直想實踐將遊戲形式溶入策展中，一款以個人作字經歷為主題的作品集遊戲，紀錄七年來的作字的種種故事。
+        </p><h3>幽之漠</h3>
+      </div>
+      <div class="work-imageBG"><img class="work-image" id="start-work-image" src="img/yuerg1.png" alt="作品標題圖片"></div>
+      <div class="info"><h3></h3>
+        <p class="work-description">
+          偶然的有天在逛書店看到一本在教如何寫程式語言（關於 webGL）的書，心想這類型的書真的有機會被賣掉嗎？在現在的時代 AI 幾乎已經可以用極方便的速度教導人們學習程式語言了，會看書的人更是少之又少，更何況這是一本多麼大又厚的書呀。<br><br>
+          不過我開始反問自己這個念頭是真的嗎？AI 時代真的是能這麼快學習語言嗎？隨後我記錄下 "webGL" 這個名稱，並且回到家後馬上使用 AI 開始學習。<br><br>
+          一般來說，程式語言是學也學不完的，需要設定專案目標，再一步一步走上去，而我設下的目標則是遊戲界的知名作品「光遇、風之旅人」，是否有機會透過 AI 就創造出這樣的遊戲呢？隨著想像，我開始著手進行，一步步的打造出可遊玩的世界。<br><br>
+        </p>
+      </div>
+      <div class="work-imageBG"><iframe style="top:0px;left:0px;right:0px;bottom:0px" width="100%" height="720px" src="https://www.youtube.com/embed/R7eh_KtaQP0?si=TugaC0DjeT_hF9Zr&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="work-imageBG"><img class="work-image" src="img/yuerg3.gif"></div>
+      <div class="info"><h3></h3>
+        <p class="work-description">
+          選擇製作為作字作品集，主要是想帶給有追蹤 IG 帳號的粉絲，用故事的方式分享是怎麼走到今天這一步的，其中又做了哪些事，並且也希望有一個代表作，能夠包含所有我會的技能，從作字、程式、動畫、平面設計等等。
+        </p>
+      </div>
+      <div class="work-imageBG"><img class="work-image" id="start-work-image" src="img/yuerg.jpg" alt="作品標題圖片"></div>
+      <div class="info"><h3></h3>
+        <p class="work-description">
+          這件作品，是首次實踐將作品集做成遊戲，也是首次與 AI 合作大量撰寫程式，過程是有趣的，需要一次又一次回想自己在玩遊戲上的手感操作，並且將其轉換為敘述程式碼的自然語言，這大概是最為困難的一部份。<br><br>
+          在嘗試的過程中，不外乎需要一直修改，或是發現有無法用言語表達的部分，只能重新理解每個程式碼所代表的意義，或是用其他故事說明 「像是企鵝在滑行的感覺」，再從生成的程式碼中嘗試。<br><br>
+          在設計作品的時候，能有這樣編寫完整故事的經驗是不多的，最有收穫的經驗，就是這是故事的策展，有著完整的啟承轉合，需要考量到觀者的情緒曲線，即便是自己的故事，只有稍微戲劇化的改編，但編寫故事上還是小心翼翼。<br><br>
+          <span id="greeting"></span>第一件作品，其實就代表了我這個人，即便「幽之漠｣還在製作中，但我仍然想介紹給您。<br><br>
+        </p>
+      </div>
+      <div class="info"><h3>深夜做稿俱樂部</h3><p class="work-description">   
+          接下來，我想介紹也是我認為的代表作。<br>
+          「深夜做稿俱樂部」是以台南小吃為靈感，投稿的視傳系系服，後續得到首獎並以網版大量印製。
+          </p>
+      </div>
+      <div class="work-imageBG"><img class="work-image" src="img/NightCludTshirt7.jpg" alt="深夜做稿俱樂部"></div>
+      <div class="info"><p class="work-description">
+        大二的時候，當時擔任系學會的美宣長，接手的第一個任務除了系學會形象視覺外，再來工作就是負責系服的甄選，內容是徵收稿件，整理與廠商溝通，將同學們投票選出來的衣服以合理的版數與定價來販售。<br><br>
+        由於上幾屆與廠商簽約，後來幾屆在印刷上都得以網版製作，並與特定廠商合作。另外一個困難則是投稿的同學們其實是對於網版沒有概念的，因此出現漸層、CMYK多色再到極細線條，想想需要的成本就令我感到害怕，最後也不意外的，同學投出的首獎是需要開出12個版的圖樣，因此在更詳細瞭解網版的製作方式後，便開始來回寫信與首獎同學溝通，數次溝通後，成功把售價壓到同學們勉強可以負擔，並順利銷售完畢。<br><br>
+        而後我升上大三，在當時意識到自己對網版印刷是很特異的熟悉的（因為高職時把自己關在暗房裡製版好幾天），其他人能夠那麼熟悉嗎？並且下一屆的美宣長是動畫組，回想自己與廠商與同學來回溝通的的過程，這一路上實在是相當艱辛，並且當今會大學購買系服的人本就不多，即便順利跑完過程，衣服也有高機率滯銷。<br><br>
+        「不然就我做吧！」<br>
+        <br>
+        這樣的念頭出現，畢竟又熟悉網版又知道怎麼操作系服販售，抱著讓美宣長學妹不要經歷這段痛苦，以及一定要得到首獎的態度，而決定準備投稿系服。<br><br>
+        以字開始，試著以幾何，並且圓圓胖胖的台南感，畢竟大多學生來到台南第一件事是聯想到小吃，因此將關鍵字定調為：「可愛、茫茫的、台南、日式復古」，即便字是主要的，也增加了VCD的元素。<br><br>
+      </p></div>
+      <div class="work-imageBG"><img class="work-image" src="img/NightCludTshirt6.png" alt="深夜做稿俱樂部"></div>
+      <div class="info"><h3>成長的過程</h3><p class="work-description">
+        是我在 FB 社團接到的，是單曲封面。<br>
+        替創作歌手安源申的首張單曲「成長的過程」所設計的單曲封面，也包含其周邊，如宣傳 Banner、MV等。
+      </p></div>
+      <div class="work-imageBG"><img class="work-image" id="start-work-image" src="img/AndrewShenyoung1.jpg" alt="安原申的數位封面"></div>
+      <div class="info"><p class="work-description">
+        那是大一時積極接案的又過了好幾個月，由於學業與身心狀況不佳早就停止了接案業務，但忽然一個私訊從我的信箱寄來，他說：「你是我在接案社團唯一一個看到專門作字的人，其他都是品牌、菜單什麼的，好像不太適合。」並且來信說明需要製作單曲封面的標準字。<br><br>
+        在討論設計時，我們討論到這首歌為什麼是這個樣子，提及歌詞有參照以前與朋友有過不愉快，但在成長之後便釋懷了，以此為發展，以撕碎的紙張代表著受傷，包裝成時光膠囊，從雜亂的抽屜中拿出，如同把過往的傷又帶出來。<br><br>
+        我想我永遠不會忘記，在視訊開會的時候他說：「我拿給朋友與工作上的導演看的時候，他們說我找到了大師，這張真的很厲害。」興奮的語氣及閃閃發光的眼神，讓我知道這個案件是成功的，這樣就夠了，這樣的成就感與滿足感留存在我的心中。<br><br>
+      </p></div>
+      <div class="work-imageBG"><img class="work-image" src="img/AndrewShenyoung2.jpg" alt="成長的過程數位封面Banner"></div>
+      <div class="info"><p class="work-description">
+        以上就是三款精選作品，希望您能更加認識我！<br><br>
+        <span id="greeting"></span> 這個頁面僅是簡單的導覽，如果回到首頁則可以看到其他更詳細的作品。<br><br>
+        <span id="time"></span> 看起來時間不早了，其他還有各種不同作品，我都會首個更新在 IG 上，所以如果想知道最新的作品，可以點擊下方的「IG」，或是點擊「PDF」查看更多作品。
+      </p></div>
+      <footer class="footer">
+        <div class="work-description">
+        <div class="social-icons">
+          <a href="https://www.behance.net/sonnngyoughost"><svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            viewBox="-127 175.8 256 162.2" xml:space="preserve">
+         <path d="M-9.5,192.7c4.8,6.7,7.2,14.8,7.2,24.2c0,9.6-2.4,17.4-7.3,23.3c-2.7,3.3-6.8,6.3-12.1,9c8.1,3,14.2,7.6,18.3,14
+           c4.1,6.4,6.2,14.1,6.2,23.2c0,9.4-2.3,17.8-7.1,25.2c-3,4.9-6.7,9.1-11.2,12.4c-5,3.9-11,6.5-17.9,8c-6.9,1.4-14.3,2.1-22.4,2.1
+           H-127V175.8h76.5C-31.3,176.1-17.6,181.7-9.5,192.7z M-95.5,203.3v34.9H-57c6.9,0,12.4-1.3,16.7-3.9s6.4-7.3,6.4-13.9
+           c0-7.4-2.8-12.2-8.5-14.6c-4.9-1.6-11.1-2.5-18.7-2.5H-95.5z M-95.5,264.3v42.2H-57c6.9,0,12.2-0.9,16-2.8c7-3.5,10.4-10,10.4-19.7
+           c0-8.2-3.3-13.9-10.1-17c-3.8-1.7-9-2.6-15.8-2.7H-95.5z M98.4,219.4c8.2,3.6,14.9,9.4,20.2,17.3c4.8,6.9,7.9,15,9.3,24.2
+           c0.8,5.4,1.2,13.1,1,23.2H43.7c0.5,11.7,4.5,20,12.2,24.7c4.7,2.9,10.3,4.4,16.9,4.4c6.9,0,12.6-1.8,17-5.4c2.4-1.9,4.5-4.6,6.3-8.1
+           h31.2c-0.8,6.9-4.6,14-11.3,21.2C105.5,332.3,90.9,338,72,338c-15.6,0-29.3-4.8-41.2-14.4c-11.9-9.6-17.9-25.2-17.9-46.8
+           c0-20.3,5.4-35.8,16.1-46.6C39.8,219.4,53.7,214,70.8,214C81.1,213.9,90.3,215.7,98.4,219.4z M52.7,245.8c-4.3,4.5-7,10.5-8.2,18.1
+           h52.7c-0.6-8.1-3.3-14.3-8.1-18.5c-4.9-4.2-11-6.3-18.2-6.3C63.1,239.1,57,241.4,52.7,245.8z M104.4,183.2H36.6v19.7h67.8V183.2z"/>
+         </svg></a>
+        <a href="https://www.instagram.com/sonnngyou.ghost/">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+            width="800px" height="800px" viewBox="0 0 169.063 169.063"
+            xml:space="preserve">
+            <path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752
+              c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407
+              c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752
+              c17.455,0,31.656,14.201,31.656,31.655V122.407z"/>
+            <path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561
+              C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561
+              c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"/>
+            <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78
+              c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78
+              C135.661,29.421,132.821,28.251,129.921,28.251z"/>
+          </svg></a>
+          <a href="https://www.threads.net/@sonnngyou.ghost"><svg aria-label="Threads" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg></a>
+          <a href="https://medium.com/@sam883187"><svg width="800px" height="800px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" fill="none"/>
+                <path d="M2,40.2l5.3-6.1v-21L2.6,7.8V7H15.1l10,21.2L33.9,7H46v.8l-4,3.7V36.6l4,3.6V41H28.6v-.8l4.1-4.8V16.6L22.7,41H21.4L9.8,17.1V33.9l5.3,6.3V41H2Z"/>
+                </svg></a>
+                <a href="https://drive.google.com/file/d/14ZlbFbIWCCiviHJA6hHT9TtJw91j_EqZ/view?usp=sharing">
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="256px" width="256px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-30.93 -30.93 371.13 371.13" xml:space="preserve" fill="#000000" stroke="#000000" stroke-width="0.00309267" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#000000" stroke-width="27.834030000000002"> <g> <path d="M38.658,0h164.23l87.049,86.711v203.227c0,10.679-8.659,19.329-19.329,19.329H38.658 c-10.67,0-19.329-8.65-19.329-19.329V19.329C19.329,8.65,27.989,0,38.658,0z"/> <path style="fill:#ffffff;" d="M289.658,86.981h-67.372c-10.67,0-19.329-8.659-19.329-19.329V0.193L289.658,86.981z"/> <path style="fill:#ffffff;" d="M217.434,146.544c3.238,0,4.823-2.822,4.823-5.557c0-2.832-1.653-5.567-4.823-5.567h-18.44 c-3.605,0-5.615,2.986-5.615,6.282v45.317c0,4.04,2.3,6.282,5.412,6.282c3.093,0,5.403-2.242,5.403-6.282v-12.438h11.153 c3.46,0,5.19-2.832,5.19-5.644c0-2.754-1.73-5.49-5.19-5.49h-11.153v-16.903C204.194,146.544,217.434,146.544,217.434,146.544z M155.107,135.42h-13.492c-3.663,0-6.263,2.513-6.263,6.243v45.395c0,4.629,3.74,6.079,6.417,6.079h14.159 c16.758,0,27.824-11.027,27.824-28.047C183.743,147.095,173.325,135.42,155.107,135.42z M155.755,181.946h-8.225v-35.334h7.413 c11.221,0,16.101,7.529,16.101,17.918C171.044,174.253,166.25,181.946,155.755,181.946z M106.33,135.42H92.964 c-3.779,0-5.886,2.493-5.886,6.282v45.317c0,4.04,2.416,6.282,5.663,6.282s5.663-2.242,5.663-6.282v-13.231h8.379 c10.341,0,18.875-7.326,18.875-19.107C125.659,143.152,117.425,135.42,106.33,135.42z M106.108,163.158h-7.703v-17.097h7.703 c4.755,0,7.78,3.711,7.78,8.553C113.878,159.447,110.863,163.158,106.108,163.158z"/> </g> </g>
+<g id="SVGRepo_iconCarrier"> <g> <path d="M38.658,0h164.23l87.049,86.711v203.227c0,10.679-8.659,19.329-19.329,19.329H38.658 c-10.67,0-19.329-8.65-19.329-19.329V19.329C19.329,8.65,27.989,0,38.658,0z"/> <path style="fill:#ffffff;" d="M289.658,86.981h-67.372c-10.67,0-19.329-8.659-19.329-19.329V0.193L289.658,86.981z"/> <path style="fill:#ffffff;" d="M217.434,146.544c3.238,0,4.823-2.822,4.823-5.557c0-2.832-1.653-5.567-4.823-5.567h-18.44 c-3.605,0-5.615,2.986-5.615,6.282v45.317c0,4.04,2.3,6.282,5.412,6.282c3.093,0,5.403-2.242,5.403-6.282v-12.438h11.153 c3.46,0,5.19-2.832,5.19-5.644c0-2.754-1.73-5.49-5.19-5.49h-11.153v-16.903C204.194,146.544,217.434,146.544,217.434,146.544z M155.107,135.42h-13.492c-3.663,0-6.263,2.513-6.263,6.243v45.395c0,4.629,3.74,6.079,6.417,6.079h14.159 c16.758,0,27.824-11.027,27.824-28.047C183.743,147.095,173.325,135.42,155.107,135.42z M155.755,181.946h-8.225v-35.334h7.413 c11.221,0,16.101,7.529,16.101,17.918C171.044,174.253,166.25,181.946,155.755,181.946z M106.33,135.42H92.964 c-3.779,0-5.886,2.493-5.886,6.282v45.317c0,4.04,2.416,6.282,5.663,6.282s5.663-2.242,5.663-6.282v-13.231h8.379 c10.341,0,18.875-7.326,18.875-19.107C125.659,143.152,117.425,135.42,106.33,135.42z M106.108,163.158h-7.703v-17.097h7.703 c4.755,0,7.78,3.711,7.78,8.553C113.878,159.447,110.863,163.158,106.108,163.158z"/> </g> </g>
+</svg>
+                </a>
+        </div>
+      </div>
+      </footer>
+    </div>
+  </div>
+</body>
+<script src="../navbar.js"></script>
+<script>
+  function updateTime() {
+      const now = new Date();
+      document.getElementById('time').textContent = now.toLocaleTimeString('zh-TW', { hour12: false });
+  }
+  setInterval(updateTime, 1000); // 每秒更新一次時間
+  updateTime();// 初始調用以立即顯示時間
+  
+   function updateGreeting() {
+    const name = document.getElementById('nameInput').value;
+    document.getElementById('greeting').textContent = name ? `${name}` : '';
+}
+
+// 設置事件監聽器以在用戶輸入時更新歡迎語
+document.getElementById('nameInput').addEventListener('input', updateGreeting);
+
+//圖片漸入
+function handleIntersection(entries, observer) {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+      }
+  });
+}
+
+const observer = new IntersectionObserver(handleIntersection, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.work-imageBG, .work-description').forEach(el => {
+  observer.observe(el);
+});
+
+//文字動畫
+function animateText(elementId, text, delay = 100) {
+  const element = document.getElementById(elementId);
+  let index = 0;
+
+  function addNextChar() {
+      if (index < text.length) {
+          element.textContent += text[index];
+          index++;
+          setTimeout(addNextChar, delay);
+      }
+  }
+  addNextChar();
+}
+window.onload = () => {
+  animateText('work-title', '給叁式ULTRACOMBOS');// 啟動動畫
+  animateText('1h3', `嗨 ${name} 初次見面`);// 啟動動畫
+};
+</script>
+</html>
