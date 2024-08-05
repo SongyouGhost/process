@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<head>
+    <html lang="zh-TW">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地字體設計管理後台</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1em;
+            background-color: rgb(255, 255, 255);
+            width: 28%;
+        }
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        label {
+            font-size: 0.8em;
+        }
+        input, button {
+            padding: 10px;
+        }
+        .font-list {
+            position: absolute;
+            right: 0px;
+            width: 70%;
+            background-color: rgb(255, 255, 255);
+        }
+        .font-header, .font-item {
+            display: grid;
+            grid-template-columns: 1fr 0.5fr 1fr 1fr 1fr 2fr 1fr;
+            gap: 10px;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .font-header {
+            font-weight: bold;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: left;
+        }
+        .font-item:last-child {
+            border-bottom: none;
+        }
+        .delete-confirm {
+            background-color: red;
+            color: white;
+        }
+        .font-item {
+            opacity: 1;
+        }
+        .font-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .imagePreview {
+            width: 30%;
+        }
+        .imagePreview img{
+            width: 100%;
+        }
+        /* 拖放排序 */
+        .move-btn {
+    padding: 2px 5px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="fontForm">
+            <input type="text" id="fontId" placeholder="id">
+            <label for="imageUrl">圖片檔案名稱</label>
+            <button id="copyImageToTheme" style="width: 10rem; font-size:0.7em;">同文字內容</button>
+            <input type="text" id="imageUrl" placeholder="圖片檔案名稱">
+            <label for="year">年月</label>
+            <input type="month" id="year" placeholder="設計年份">
+            <label for="theme">文字</label>
+            <input type="text" id="theme" placeholder="文字內容">
+            <label for="type">風格</label>
+            <input type="text" id="type" placeholder="風格">
+            <label for="purpose">目的</label>
+            <input type="text" id="purpose" placeholder="目的">
+            <label for="story">故事</label>
+            <textarea id="story" placeholder="故事"></textarea>
+            <button type="submit">保存</button>
+        </form>
+        <div id="imagepreview" class="imagePreview"><img id="previewimage" src="" alt="圖片預覽"></div>
+        <button onclick="saveData()">保存數據</button>
+        <input type="file" id="importFile" accept=".json" style="display: none;">
+        <button onclick="document.getElementById('importFile').click()">導入數據</button>
+</div>
+        <div class="font-list">
+            <div class="font-header">
+                <div>圖片</div><div>年月</div><div>主題</div><div>風格</div><div>目的</div><div>故事</div><div>操作</div>
+            </div>
+            <div id="fontListContent"></div>
+        </div>
+</body>
+<script>
+    // 圖片預覽
+const imageNameInput = document.getElementById('imageUrl');
+const imagePreview = document.getElementById('imagepreview');
+const previewImage = document.getElementById('previewimage');
+
+imageNameInput.addEventListener('input', function() {
+    let imageName = this.value.trim();
+    
+    // 如果沒有文件擴展名，自動添加 .png 或 .jpg
+    if (!imageName.match(/\.(png|jpg|jpeg)$/i)) {
+        imageName += '.png';
+    }
+    
+    // 創建一個新的 Image 對象來測試圖片是否有效
+    const img = new Image();
+    img.onload = function() {
+        // 圖片有效，顯示預覽
+        previewImage.src = img.src;
+    };
+    img.onerror = function() {
+        // 圖片無效，顯示錯誤消息
+        previewImage.src = '';
+        previewImage.alt = '無效的圖片文件名或路徑';
+        
+    };
+    
+    // 設置圖片源
+    img.src = imageName;
+});
+
+const inputs = document.querySelectorAll('#fontForm input');
+
+inputs.forEach((input, index) => {
+    input.addEventListener('keydown', function(event) {
+        let nextIndex;
+
+        switch(event.key) {
+            case 'ArrowDown':
+                nextIndex = index + 1; // 每行3個欄位
+                break;
+            case 'ArrowUp':
+                nextIndex = index - 1;
+                break;
+            default:
+                return; // 其他按鍵不做處理
+        }
+
+        // 確保焦點在合法範圍內
+        if (nextIndex >= 0 && nextIndex < inputs.length) {
+            inputs[nextIndex].focus();
+        }
+
+        event.preventDefault(); // 阻止默認行為
+    });
+});
+
+// 複製圖片檔案名稱到文字內容
+document.getElementById('copyImageToTheme').addEventListener('click', function() {
+    var imageUrl = document.getElementById('theme').value;
+    document.getElementById('imageUrl').value = imageUrl;
+});
+</script>
+    <script>
+        let fonts = [];
+        let importedFileName = '';
+
+        function loadFonts() {
+            const storedFonts = localStorage.getItem('fonts');
+            
+            if (storedFonts) {
+                fonts = JSON.parse(storedFonts);
+            }
+            renderList();
+        }
+
+        function renderList() {
+            const listContent = document.getElementById('fontListContent');
+            listContent.innerHTML = '';
+            fonts.forEach(font => {
+                const fontItem = document.createElement('div');
+                fontItem.className = 'font-item';
+                fontItem.innerHTML = `
+                    <div><img src="${font.image}" alt="字體設計">${font.image}<br>${font.id}</div>
+                    <div>${font.year}</div>
+                    <div>${font.theme}</div>
+                    <div>${font.type}</div>
+                    <div>${font.purpose}</div>
+                    <div>${font.story}</div>
+                    <div>
+                        <button onclick="editFont(${font.id})">編輯</button>
+                        <button onclick="deleteFont(${font.id}, this)">刪除</button>
+                        
+                    </div>
+                `;
+                listContent.appendChild(fontItem);
+            });
+        }
+
+        
+
+        function saveFont(event) {
+            event.preventDefault();
+            const fontId = document.getElementById('fontId').value;
+            let imageUrl = document.getElementById('imageUrl').value;
+            if (!imageUrl.toLowerCase().endsWith('.png') && !imageUrl.toLowerCase().endsWith('.jpg')) {
+                imageUrl += '.png';
+            }
+
+            const newFont = {
+                id: fontId ? parseInt(fontId) : Date.now(),
+                image: imageUrl,
+                year: document.getElementById('year').value,
+                theme: document.getElementById('theme').value,
+                type: document.getElementById('type').value,
+                purpose: document.getElementById('purpose').value,
+                story: document.getElementById('story').value
+            };
+            
+
+            if (fontId) {
+                const index = fonts.findIndex(f => f.id === parseInt(fontId));
+                if (index !== -1) {
+                    fonts[index] = newFont;
+                }
+            } else {
+                fonts.push(newFont);
+            }
+
+            saveFonts();
+            renderList();
+            resetForm();
+        }
+        
+
+        function editFont(id) {
+            const font = fonts.find(f => f.id === id);
+            if (font) {
+                document.getElementById('fontId').value = font.id;
+                document.getElementById('imageUrl').value = font.image;
+                document.getElementById('year').value = font.year;
+                document.getElementById('theme').value = font.theme;
+                document.getElementById('type').value = font.type;
+                document.getElementById('purpose').value = font.purpose;
+                document.getElementById('story').value = font.story;
+            }
+        }
+
+        function deleteFont(id, button) {
+            if (button.textContent === '刪除') {
+                button.textContent = '確定?';
+                button.classList.add('delete-confirm');
+            } else {
+                fonts = fonts.filter(f => f.id !== id);
+                saveFonts();
+                renderList();
+            }
+        }
+
+        function saveFonts() {
+            localStorage.setItem('fonts', JSON.stringify(fonts));
+        }
+
+        function resetForm() {
+            document.getElementById('fontForm').reset();
+            document.getElementById('fontId').value = '';
+        }
+        
+
+        function saveData() {
+            if (!importedFileName) {
+                importedFileName = 'font_designs.json';
+            }
+            const dataStr = JSON.stringify(fonts);
+            const blob = new Blob([dataStr], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", url);
+            downloadAnchorNode.setAttribute("download", importedFileName);
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            importedFileName = file.name;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedFonts = JSON.parse(e.target.result);
+                    fonts = importedFonts;
+                    saveFonts();
+                    renderList();
+                    alert('數據導入成功！');
+                } catch (error) {
+                    alert('導入失敗，請確保文件格式正確。');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        document.getElementById('fontForm').addEventListener('submit', saveFont);
+        document.getElementById('importFile').addEventListener('change', importData);
+        loadFonts();
+    </script>
+</html>
