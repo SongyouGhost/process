@@ -88,14 +88,13 @@
             position: relative;
             transition: all 100ms ease-in-out;
             min-height: 150px;
-
+            width: auto;
             height: calc(98.5dvw * 0.2);
             opacity: 0.1;
-            transition: opacity 1s ease;
+            transition: opacity 1000ms ease-in;
         }
-        .font-item.visible {
-            opacity: 1;
-        }
+        .font-item.visible { opacity: 1;}
+        
         .font-item img {
             width: auto;
             height: 100%;
@@ -163,6 +162,7 @@
     <div id="fontListContent"></div>
 </body>
     <script>
+        /*
         let fonts = [];
 
         function loadFonts() {
@@ -194,36 +194,98 @@
                             <div>${font.type}</div>
                             <div class="purpose">${font.purpose}</div>
                         </div>
-                        
                     </div>     
                 `;
                 listContent.appendChild(fontItem);
             });
         }
-        loadFonts();
-
-        //圖片漸入
-    function handleIntersection(entries, observer) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 圖片漸入
+            function handleIntersection(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }
+        
+            var observer = new IntersectionObserver(handleIntersection, {
+                threshold: 0.1, // 設定觸發閾值，當元素可視區域的10%被觀察到時觸發
+            });
+        
+            var elements = document.querySelectorAll('.font-item');
+            for (var i = 0; i < elements.length; i++) {
+                observer.observe(elements[i]);
             }
         });
-    }
-    
-    var observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.2, // 設定觸發閾值，當元素可視區域的20%被觀察到時觸發
-    });
-    
-    var elements = document.querySelectorAll('.font-item');
-    for (var i = 0; i < elements.length; i++) {
-        observer.observe(elements[i]);
-    }
+        */
     </script>
     <script>
+        async function loadFonts() {
+            try {
+                const response = await fetch('font_designs.json'); // 替換為你的 JSON 文件路徑
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error loading fonts:', error);
+                return null;
+            }
+        }
+        
+        function renderList(fonts) {
+            const listContent = document.getElementById('fontListContent');
+            listContent.innerHTML = '';
+            fonts.forEach(font => {
+                const fontItem = document.createElement('div');
+                fontItem.className = 'font-item';
+                fontItem.innerHTML = `
+                    <img src="${font.image}" alt="${font.image}">
+                    <div class="font-info">
+                        <div class="story">${font.story}</div>
+                        <div class="font-layoutL">
+                            <div class="theme">${font.theme}</div>
+                            <div class="year">${font.year}</div>
+                        </div>
+                        <div class="font-layoutR">
+                            <div>${font.type}</div>
+                            <div class="purpose">${font.purpose}</div>
+                        </div>
+                    </div>     
+                `;
+                listContent.appendChild(fontItem);
+            });
+        
+            // 使用 IntersectionObserver 來觸發漸入效果
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // 觸發一次後停止觀察
+            }
+        });
+    }, {
+        threshold: 0.2 // 元素進入視窗20%時觸發
+    });
+
+    document.querySelectorAll('.font-item').forEach(item => {
+        observer.observe(item);
+    });
+}
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            const fonts = await loadFonts();
+            if (fonts) {
+                renderList(fonts);
+            }
+        });
         
     </script>
+    
     <script>
         const footer = document.querySelector('.social-icons');
     footer.innerHTML = `
@@ -268,4 +330,5 @@
 </svg></a>
     `;
     </script>
+    
 </html>
