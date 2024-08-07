@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>幽字體合集</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200..900&display=swap" rel="stylesheet">
     <style>
         :root {
             --Acolor: hsl(0, 0%, 0%);
@@ -17,7 +19,7 @@
             display: flex;
             flex-direction: column;
             background-color: var(--Acolor);
-            font-family: 'Noto Sans TC', sans-serif;
+            font-family: 'Source Code Pro', 'Noto Sans TC', sans-serif;
         }
         /* Narbar2*/
         .navbar {
@@ -31,23 +33,28 @@
             grid-template-columns: 1fr 1fr 8fr 2fr;
             gap: 5px 5px ;
             font-size: 1.7em;
-            font-weight: 800;
+            
             align-items: center;
         }
         .navbar a {
             color: #000000;
-            font-weight: 600;
+            font-variation-settings: "wght" 400;
             height: 2rem;
             text-decoration: none;
             padding: 0px 5px;
-            line-height: 1;
+            line-height: 1.2;
+            text-align: center;
+            justify-items: center;
+            transition: all 300ms ease-in;
         }
         .navbar a:hover {
             text-decoration: underline;
             color: #ffffff;
+            font-variation-settings: "wght" 900;
         }
         marquee {
             font-size: calc(1.5rem);
+            font-weight: 300;
         }
         .social-icons {
             margin: auto;
@@ -91,7 +98,7 @@
             width: auto;
             height: calc(98.5dvw * 0.2);
             opacity: 0.1;
-            transition: opacity 1000ms ease-in;
+            transition: opacity 800ms ease-in;
         }
         .font-item.visible { opacity: 1;}
         
@@ -105,7 +112,7 @@
         .font-item:hover img{ filter: blur(5px) invert(100%);}
         .font-item:hover .font-info {
             display: flex; background-color: rgba(0, 0, 0, 0.3); border: 3px solid #c6c6c6; opacity: 1;
-            font-weight: 600;
+            font-variation-settings: "wght" 600;
         }
         .font-info {
             position: absolute;
@@ -115,13 +122,13 @@
             left: 0px;
             right: 0px;
             font-size: 0.8rem;
-            font-weight: 100;
+            font-variation-settings: "wght" 100;
             border: 0px solid #c6c6c6;
             color: rgb(250, 250, 250);
             opacity: 0;
             flex-direction: column;
             flex-wrap: wrap;
-            transition: all 200ms ease, border 400ms ease;
+            transition: all 400ms ease-in-out, border 400ms ease, font-variation-settings 500ms ease-in-out;
             word-wrap: break-word;
         }
         .font-info .story {
@@ -162,67 +169,6 @@
     <div id="fontListContent"></div>
 </body>
     <script>
-        /*
-        let fonts = [];
-
-        function loadFonts() {
-            fetch('font_designs.json') // 替換為你的 JSON 文件路徑
-                .then(response => response.json())
-                .then(data => {
-                    fonts = data;
-                    renderList();
-                })
-                .catch(error => console.error('Error loading fonts:', error));
-        }
-        
-
-        function renderList() {
-            const listContent = document.getElementById('fontListContent');
-            listContent.innerHTML = '';
-            fonts.forEach(font => {
-                const fontItem = document.createElement('div');
-                fontItem.className = 'font-item';
-                fontItem.innerHTML = `
-                    <img src="${font.image}" alt="${font.image}">
-                    <div class="font-info">
-                        <div class="story">${font.story}</div>
-                        <div class="font-layoutL">
-                            <div class="theme">${font.theme}</div>
-                            <div class="year">${font.year}</div>
-                        </div>
-                        <div class="font-layoutR">
-                            <div>${font.type}</div>
-                            <div class="purpose">${font.purpose}</div>
-                        </div>
-                    </div>     
-                `;
-                listContent.appendChild(fontItem);
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            // 圖片漸入
-            function handleIntersection(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }
-        
-            var observer = new IntersectionObserver(handleIntersection, {
-                threshold: 0.1, // 設定觸發閾值，當元素可視區域的10%被觀察到時觸發
-            });
-        
-            var elements = document.querySelectorAll('.font-item');
-            for (var i = 0; i < elements.length; i++) {
-                observer.observe(elements[i]);
-            }
-        });
-        */
-    </script>
-    <script>
         async function loadFonts() {
             try {
                 const response = await fetch('font_designs.json'); // 替換為你的 JSON 文件路徑
@@ -249,7 +195,7 @@
                         <div class="story">${font.story}</div>
                         <div class="font-layoutL">
                             <div class="theme">${font.theme}</div>
-                            <div class="year">${font.year}</div>
+                            <div class="year">${font.year.replace('-', '.')}</div>
                         </div>
                         <div class="font-layoutR">
                             <div>${font.type}</div>
